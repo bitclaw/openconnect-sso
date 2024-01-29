@@ -207,8 +207,6 @@ def run_openconnect(auth_info, host, proxy, version, args):
         "--version-string",
         version,
         "--cookie-on-stdin",
-        "--script",
-        "/home/mohan/dev-vpn/vpnc-script-split-traffic",
         *args,
         host.vpn_url,
     ]
