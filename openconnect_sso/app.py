@@ -199,8 +199,7 @@ def run_openconnect(auth_info, host, proxy, version, args):
             "Cannot find suitable program to execute as superuser (doas/sudo), exiting"
         )
         return 20
-    command_line = [
-        as_root,
+    command_line = as_root + [
         "openconnect",
         "--cookie-on-stdin",
         *args,
