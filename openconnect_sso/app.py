@@ -202,10 +202,6 @@ def run_openconnect(auth_info, host, proxy, version, args):
     command_line = [
         as_root,
         "openconnect",
-        "--useragent",
-        f"AnyConnect Linux_64 {version}",
-        "--version-string",
-        version,
         "--cookie-on-stdin",
         *args,
         host.vpn_url,
