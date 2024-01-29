@@ -185,7 +185,7 @@ def parse_auth_complete_response(xml):
     assert xml.auth.get("id") == "success"
     resp = AuthCompleteResponse(
         auth_id=xml.auth.get("id"),
-        auth_message=xml.auth.message,
+        auth_message="<xml.auth.message> this is causing issue",
         session_token=xml["session-token"],
         server_cert_hash=xml.config["vpn-base-config"]["server-cert-hash"],
     )
