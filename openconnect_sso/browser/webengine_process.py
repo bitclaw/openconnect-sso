@@ -85,9 +85,9 @@ class Process(multiprocessing.Process):
         if self.proxy:
             parsed = urlparse(self.proxy)
             if parsed.scheme.startswith("socks5"):
-                proxy_type = QNetworkProxy.Socks5Proxy
+                proxy_type = QNetworkProxy.ProxyType.Socks5Proxy
             elif parsed.scheme.startswith("http"):
-                proxy_type = QNetworkProxy.HttpProxy
+                proxy_type = QNetworkProxy.ProxyType.HttpProxy
             else:
                 raise ValueError("Unsupported proxy type", parsed.scheme)
             proxy = QNetworkProxy(proxy_type, parsed.hostname, parsed.port)
