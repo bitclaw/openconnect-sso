@@ -16,7 +16,7 @@ from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtWidgets import QApplication, QWidget, QSizePolicy, QVBoxLayout
 
 from openconnect_sso import config
-
+from queue import Empty
 
 app = None
 profile = None
@@ -61,7 +61,7 @@ class Process(multiprocessing.Process):
         while self.is_alive():
             try:
                 return self._states.get_nowait()
-            except multiprocessing.queues.Empty:
+            except Empty:
                 await asyncio.sleep(0.01)
         if not self.is_alive():
             raise EOFError()
