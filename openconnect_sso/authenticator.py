@@ -1,3 +1,5 @@
+import time
+
 import attr
 import requests
 import structlog
@@ -55,7 +57,12 @@ class Authenticator:
     def _detect_authentication_target_url(self):
         # Follow possible redirects in a GET request
         # Authentication will occur using a POST request on the final URL
-        response = requests.get(self.host.vpn_url)
+        start_time = time.time()
+        response = requests.get(self.host.vpn_url, timeout=30)
+        elapsed_time = time.time() - start_time
+        logger.debug(
+            "GET request completed", url=self.host.vpn_url, response_time=elapsed_time
+        )
         response.raise_for_status()
         self.host.address = response.url
         logger.debug("Auth target url", url=self.host.vpn_url)
