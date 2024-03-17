@@ -58,7 +58,7 @@ class Authenticator:
         # Follow possible redirects in a GET request
         # Authentication will occur using a POST request on the final URL
         start_time = time.time()
-        response = requests.get(self.host.vpn_url, timeout=30)
+        response = requests.get(self.host.vpn_url, timeout=300)
         elapsed_time = time.time() - start_time
         logger.debug(
             "GET request completed", url=self.host.vpn_url, response_time=elapsed_time
